@@ -28,6 +28,7 @@ pytest
 
 **注意**：因为我这里是针对自己的接口项目进行测试，如果想直接执行我的测试用例来查看效果，需要提前部署上面提到的 [flaskDemo](https://github.com/wintests/flaskDemo) 接口项目。
 
+
 ## 项目结构
 
 - api ====>> 接口封装层，如封装HTTP接口为Python接口
