@@ -39,4 +39,11 @@ class ReadFileData():
         # print("读到数据 ==>>  {} ".format(data))
         return data
 
+    def modify_ini(self,file_path):
+        config = MyConfigParser()
+        config.read(file_path, encoding="UTF-8")
+        return config
+
+
+
 data = ReadFileData()
