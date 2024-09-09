@@ -39,11 +39,38 @@ class ReadFileData():
         # print("读到数据 ==>>  {} ".format(data))
         return data
 
-    def modify_ini(self,file_path):
+    def add_ini(self,file_path,NewSection,new_key,new_value):
+        config = MyConfigParser()
+        # 读取现有的配置文件
+        config.read(file_path, encoding="UTF-8")
+        # 增加新的配置部分
+        config.add_section(NewSection)
+        config.set(NewSection, new_key, new_value)
+        # 写回到配置文件
+        with open(file_path, 'w') as configfile:
+            config.write(configfile)
+
+    def modify_ini(self, file_path,SectionName,key,new_value):
         config = MyConfigParser()
         config.read(file_path, encoding="UTF-8")
-        return config
+        # 修改现有配置项
+        config.set(SectionName, key, new_value)
+        # 写回到配置文件
+        with open('example.ini', 'w') as configfile:
+            config.write(configfile)
 
+    def remove_ini(self, file_path,SectionName,key):
+        config = MyConfigParser()
+        config.read(file_path, encoding="UTF-8")
+        # 删除配置项
+        config.remove_option(SectionName, key)
+
+        # 如果需要删除整个部分
+        # config.remove_section(SectionName)
+
+        # 写回到配置文件
+        with open('example.ini', 'w') as configfile:
+            config.write(configfile)
 
 
 data = ReadFileData()
